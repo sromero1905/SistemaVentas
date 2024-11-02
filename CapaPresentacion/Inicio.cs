@@ -15,12 +15,20 @@ namespace CapaPresentacion
 {
     public partial class Inicio : Form
     {
-        private static Usuario usuarioActual;
+        private static Usuario usuarioActual ;
         private static IconMenuItem MenuActivo = null;
         private static Form FormularioActivo = null;
-        public Inicio(Usuario objusuario)
+        public Inicio(Usuario objusuario = null)
         {
-            usuarioActual = objusuario;
+            if (objusuario == null) 
+                usuarioActual = new Usuario() { NombreCompleto = "ADMIN1", IdUsuario = 1 };
+
+            else
+                usuarioActual = objusuario;
+
+
+
+          
             InitializeComponent();
         }
 
@@ -35,12 +43,10 @@ namespace CapaPresentacion
                 if(encontrado == false)
                 {
                     iconMenu.Visible = false;
-                }
+                } 
 
 
             }
-
-
 
 
             lblUsuario.Text = usuarioActual.NombreCompleto;
@@ -123,6 +129,6 @@ namespace CapaPresentacion
             AbrirFormulario((IconMenuItem)sender, new frmReportes());
         }
 
-       
+      
     }
 }
