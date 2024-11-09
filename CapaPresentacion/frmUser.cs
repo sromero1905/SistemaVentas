@@ -65,7 +65,7 @@ namespace CapaPresentacion
             List<Usuario> ListaUsuario = new CN_Usuario().Listar();
             foreach (Usuario item in ListaUsuario)
             {
-                dgvdata.Rows.Add(new object[] { "", item.IdUsuario, item.NombreCompleto, item.Documento,item.Correo,item.Clave,
+                dgvdata.Rows.Add(new object[] { "", item.IdUsuario,item.NombreCompleto,item.Documento,item.Correo,item.Clave,
                 item.oRol.IdRol,
                 item.oRol.Descripcion,
                 item.Estado == true ?1 :0,
@@ -248,6 +248,11 @@ namespace CapaPresentacion
                     if (respuesta)
                     {
                         dgvdata.Rows.RemoveAt(Convert.ToInt32( txtIndice.Text));
+                        this.limpiar();
+                    }
+                    else
+                    {
+                        MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 } 
             }
